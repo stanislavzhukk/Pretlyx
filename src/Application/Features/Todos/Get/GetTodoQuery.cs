@@ -1,7 +1,7 @@
-namespace Petlyx.Application.Features.Todos.Get;
+namespace Application.Features.Todos.Get;
 
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Domain.Common;
+using Application.Abstractions.Messaging;
+using Domain.Common;
 
 public sealed record GetTodoQuery(Guid Id) : IQuery<Result<TodoDetailResponse>>;
 

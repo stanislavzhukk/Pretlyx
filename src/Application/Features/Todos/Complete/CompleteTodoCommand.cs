@@ -1,6 +1,6 @@
-namespace Petlyx.Application.Features.Todos.Complete;
+namespace Application.Features.Todos.Complete;
 
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Domain.Common;
+using Application.Abstractions.Messaging;
+using Domain.Common;
 
 public sealed record CompleteTodoCommand(Guid Id) : ICommand;

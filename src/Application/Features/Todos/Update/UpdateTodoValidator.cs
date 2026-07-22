@@ -1,4 +1,4 @@
-namespace Petlyx.Application.Features.Todos.Update;
+namespace Application.Features.Todos.Update;
 
 using FluentValidation;
 

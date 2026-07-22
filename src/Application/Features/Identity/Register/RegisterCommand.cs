@@ -1,7 +1,7 @@
-namespace Petlyx.Application.Features.Identity.Register;
+namespace Application.Features.Identity.Register;
 
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Domain.Common;
+using Application.Abstractions.Messaging;
+using Domain.Common;
 
 public sealed record RegisterCommand(
     string FirstName,

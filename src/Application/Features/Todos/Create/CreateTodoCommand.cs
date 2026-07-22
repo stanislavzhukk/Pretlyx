@@ -1,7 +1,7 @@
-namespace Petlyx.Application.Features.Todos.Create;
+namespace Application.Features.Todos.Create;
 
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Domain.Common;
+using Application.Abstractions.Messaging;
+using Domain.Common;
 
 public sealed record CreateTodoCommand(string Title, string? Description) : ICommand<Result<CreateTodoResponse>>;
 

@@ -1,6 +1,6 @@
-namespace Petlyx.Infrastructure.Persistence.Configurations;
+namespace Infrastructure.Persistence.Configurations;
 
-using Petlyx.Domain.Entities;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

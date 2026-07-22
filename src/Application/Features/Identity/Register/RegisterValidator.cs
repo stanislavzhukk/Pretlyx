@@ -1,4 +1,4 @@
-namespace Petlyx.Application.Features.Identity.Register;
+namespace Application.Features.Identity.Register;
 
 using FluentValidation;
 

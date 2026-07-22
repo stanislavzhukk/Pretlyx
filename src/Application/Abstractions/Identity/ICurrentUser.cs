@@ -1,4 +1,4 @@
-namespace Petlyx.Application.Abstractions.Identity;
+namespace Application.Abstractions.Identity;
 
 public interface ICurrentUser
 {

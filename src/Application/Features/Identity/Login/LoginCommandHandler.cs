@@ -1,9 +1,9 @@
-namespace Petlyx.Application.Features.Identity.Login;
+namespace Application.Features.Identity.Login;
 
-using Petlyx.Application.Abstractions.Identity;
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Domain.Common;
-using Petlyx.Domain.Entities;
+using Application.Abstractions.Identity;
+using Application.Abstractions.Messaging;
+using Domain.Common;
+using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 
 public sealed class LoginCommandHandler(

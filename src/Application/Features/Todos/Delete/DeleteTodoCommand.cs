@@ -1,6 +1,6 @@
-namespace Petlyx.Application.Features.Todos.Delete;
+namespace Application.Features.Todos.Delete;
 
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Domain.Common;
+using Application.Abstractions.Messaging;
+using Domain.Common;
 
 public sealed record DeleteTodoCommand(Guid Id) : ICommand;

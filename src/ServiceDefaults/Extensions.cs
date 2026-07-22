@@ -1,4 +1,4 @@
-namespace Petlyx.ServiceDefaults;
+namespace ServiceDefaults;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;

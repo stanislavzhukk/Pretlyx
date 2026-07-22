@@ -1,6 +1,6 @@
-namespace Petlyx.Application.UnitTests.Features.Todos;
+namespace Application.UnitTests.Features.Todos;
 
-using Petlyx.Application.Features.Todos.Create;
+using Application.Features.Todos.Create;
 using FluentAssertions;
 
 public sealed class CreateTodoCommandHandlerTests

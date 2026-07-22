@@ -1,9 +1,9 @@
-namespace Petlyx.Application.Features.Todos.GetAll;
+namespace Application.Features.Todos.GetAll;
 
-using Petlyx.Application.Abstractions.Data;
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Application.Features.Todos.Get;
-using Petlyx.Domain.Common;
+using Application.Abstractions.Data;
+using Application.Abstractions.Messaging;
+using Application.Features.Todos.Get;
+using Domain.Common;
 using Microsoft.EntityFrameworkCore;
 
 public sealed class GetAllTodosQueryHandler(IAppDbContext dbContext) : IQueryHandler<GetAllTodosQuery, Result<PagedResult<TodoDetailResponse>>>

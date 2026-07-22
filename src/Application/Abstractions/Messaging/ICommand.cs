@@ -1,6 +1,6 @@
-namespace Petlyx.Application.Abstractions.Messaging;
+namespace Application.Abstractions.Messaging;
 
-using Petlyx.Domain.Common;
+using Domain.Common;
 
 public interface ICommand : ICommand<Result>;
 

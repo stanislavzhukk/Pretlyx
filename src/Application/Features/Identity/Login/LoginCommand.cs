@@ -1,7 +1,7 @@
-namespace Petlyx.Application.Features.Identity.Login;
+namespace Application.Features.Identity.Login;
 
-using Petlyx.Application.Abstractions.Identity;
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Domain.Common;
+using Application.Abstractions.Identity;
+using Application.Abstractions.Messaging;
+using Domain.Common;
 
 public sealed record LoginCommand(string Email, string Password) : ICommand<Result<TokenResponse>>;

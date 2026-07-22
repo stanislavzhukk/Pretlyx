@@ -1,7 +1,7 @@
-using Petlyx.Infrastructure.Persistence;
+using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace Petlyx.Application.UnitTests;
+namespace Application.UnitTests;
 
 public static class TestDbContextFactory
 {

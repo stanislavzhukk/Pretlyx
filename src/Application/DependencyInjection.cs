@@ -1,7 +1,7 @@
-namespace Petlyx.Application;
+namespace Application;
 
 using System.Reflection;
-using Petlyx.Application.Abstractions.Messaging;
+using Application.Abstractions.Messaging;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 

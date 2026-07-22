@@ -1,11 +1,11 @@
-namespace Petlyx.Infrastructure;
+namespace Infrastructure;
 
 using System.Text;
-using Petlyx.Application.Abstractions.Data;
-using Petlyx.Application.Abstractions.Identity;
-using Petlyx.Domain.Entities;
-using Petlyx.Infrastructure.Identity;
-using Petlyx.Infrastructure.Persistence;
+using Application.Abstractions.Data;
+using Application.Abstractions.Identity;
+using Domain.Entities;
+using Infrastructure.Identity;
+using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;

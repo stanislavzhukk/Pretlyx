@@ -1,9 +1,9 @@
-using Petlyx.Api.Endpoints;
-using Petlyx.Api.Extensions;
-using Petlyx.Application;
-using Petlyx.Infrastructure;
-using Petlyx.Infrastructure.Persistence;
-using Petlyx.ServiceDefaults;
+using Api.Endpoints;
+using Api.Extensions;
+using Application;
+using Infrastructure;
+using Infrastructure.Persistence;
+using ServiceDefaults;
 using Scalar.AspNetCore;
 using Serilog;
 

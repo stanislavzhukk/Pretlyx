@@ -1,7 +1,7 @@
-namespace Petlyx.Infrastructure.Identity;
+namespace Infrastructure.Identity;
 
 using System.Security.Claims;
-using Petlyx.Application.Abstractions.Identity;
+using Application.Abstractions.Identity;
 using Microsoft.AspNetCore.Http;
 
 public sealed class CurrentUser(IHttpContextAccessor httpContextAccessor) : ICurrentUser

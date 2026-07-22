@@ -1,8 +1,8 @@
-namespace Petlyx.Application.Features.Todos.Complete;
+namespace Application.Features.Todos.Complete;
 
-using Petlyx.Application.Abstractions.Data;
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Domain.Common;
+using Application.Abstractions.Data;
+using Application.Abstractions.Messaging;
+using Domain.Common;
 
 public sealed class CompleteTodoCommandHandler(IAppDbContext dbContext) : ICommandHandler<CompleteTodoCommand>
 {

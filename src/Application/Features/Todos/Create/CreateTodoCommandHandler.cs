@@ -1,9 +1,9 @@
-namespace Petlyx.Application.Features.Todos.Create;
+namespace Application.Features.Todos.Create;
 
-using Petlyx.Application.Abstractions.Data;
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Domain.Common;
-using Petlyx.Domain.Entities;
+using Application.Abstractions.Data;
+using Application.Abstractions.Messaging;
+using Domain.Common;
+using Domain.Entities;
 
 public sealed class CreateTodoCommandHandler(IAppDbContext dbContext) : ICommandHandler<CreateTodoCommand, Result<CreateTodoResponse>>
 {

@@ -1,4 +1,4 @@
-namespace Petlyx.Application.Features.Todos.Create;
+namespace Application.Features.Todos.Create;
 
 using FluentValidation;
 

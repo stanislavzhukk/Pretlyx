@@ -1,11 +1,11 @@
-namespace Petlyx.Infrastructure.Identity;
+namespace Infrastructure.Identity;
 
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using Petlyx.Application.Abstractions.Identity;
-using Petlyx.Domain.Entities;
+using Application.Abstractions.Identity;
+using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;

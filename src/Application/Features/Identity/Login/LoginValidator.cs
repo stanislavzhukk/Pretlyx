@@ -1,4 +1,4 @@
-namespace Petlyx.Application.Features.Identity.Login;
+namespace Application.Features.Identity.Login;
 
 using FluentValidation;
 

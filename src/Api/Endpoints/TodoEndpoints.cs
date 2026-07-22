@@ -1,14 +1,14 @@
-using Petlyx.Api.Extensions;
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Application.Features.Todos.Complete;
-using Petlyx.Application.Features.Todos.Create;
-using Petlyx.Application.Features.Todos.Delete;
-using Petlyx.Application.Features.Todos.Get;
-using Petlyx.Application.Features.Todos.GetAll;
-using Petlyx.Application.Features.Todos.Update;
-using Petlyx.Domain.Common;
+using Api.Extensions;
+using Application.Abstractions.Messaging;
+using Application.Features.Todos.Complete;
+using Application.Features.Todos.Create;
+using Application.Features.Todos.Delete;
+using Application.Features.Todos.Get;
+using Application.Features.Todos.GetAll;
+using Application.Features.Todos.Update;
+using Domain.Common;
 
-namespace Petlyx.Api.Endpoints;
+namespace Api.Endpoints;
 public static class TodoEndpoints
 {
     public static void MapTodoEndpoints(this IEndpointRouteBuilder app)

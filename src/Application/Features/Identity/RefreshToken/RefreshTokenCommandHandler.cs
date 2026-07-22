@@ -1,8 +1,8 @@
-namespace Petlyx.Application.Features.Identity.RefreshToken;
+namespace Application.Features.Identity.RefreshToken;
 
-using Petlyx.Application.Abstractions.Identity;
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Domain.Common;
+using Application.Abstractions.Identity;
+using Application.Abstractions.Messaging;
+using Domain.Common;
 
 public sealed class RefreshTokenCommandHandler(ITokenService tokenService) : ICommandHandler<RefreshTokenCommand, Result<TokenResponse>>
 {

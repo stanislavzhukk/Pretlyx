@@ -1,8 +1,8 @@
-namespace Petlyx.Application.Features.Identity.Register;
+namespace Application.Features.Identity.Register;
 
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Domain.Common;
-using Petlyx.Domain.Entities;
+using Application.Abstractions.Messaging;
+using Domain.Common;
+using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 
 public sealed class RegisterCommandHandler(UserManager<ApplicationUser> userManager) : ICommandHandler<RegisterCommand>

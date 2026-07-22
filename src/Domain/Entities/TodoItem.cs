@@ -1,6 +1,6 @@
-namespace Petlyx.Domain.Entities;
+namespace Domain.Entities;
 
-using Petlyx.Domain.Common;
+using Domain.Common;
 
 public sealed class TodoItem : AuditableEntity
 {

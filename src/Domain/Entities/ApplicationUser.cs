@@ -1,4 +1,4 @@
-namespace Petlyx.Domain.Entities;
+namespace Domain.Entities;
 
 using Microsoft.AspNetCore.Identity;
 

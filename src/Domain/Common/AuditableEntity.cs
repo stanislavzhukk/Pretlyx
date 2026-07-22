@@ -1,4 +1,4 @@
-namespace Petlyx.Domain.Common;
+namespace Domain.Common;
 
 public abstract class AuditableEntity : BaseEntity
 {

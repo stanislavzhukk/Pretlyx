@@ -1,6 +1,6 @@
-namespace Petlyx.Infrastructure.Persistence;
+namespace Infrastructure.Persistence;
 
-using Petlyx.Domain.Entities;
+using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

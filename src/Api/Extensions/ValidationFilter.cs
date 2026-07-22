@@ -1,4 +1,4 @@
-namespace Petlyx.Api.Extensions;
+namespace Api.Extensions;
 
 using FluentValidation;
 

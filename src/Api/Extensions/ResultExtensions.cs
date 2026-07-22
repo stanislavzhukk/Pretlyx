@@ -1,6 +1,6 @@
-namespace Petlyx.Api.Extensions;
+namespace Api.Extensions;
 
-using Petlyx.Domain.Common;
+using Domain.Common;
 
 public static class ResultExtensions
 {

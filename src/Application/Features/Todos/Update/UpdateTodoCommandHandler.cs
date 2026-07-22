@@ -1,8 +1,8 @@
-namespace Petlyx.Application.Features.Todos.Update;
+namespace Application.Features.Todos.Update;
 
-using Petlyx.Application.Abstractions.Data;
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Domain.Common;
+using Application.Abstractions.Data;
+using Application.Abstractions.Messaging;
+using Domain.Common;
 
 public sealed class UpdateTodoCommandHandler(IAppDbContext dbContext) : ICommandHandler<UpdateTodoCommand>
 {

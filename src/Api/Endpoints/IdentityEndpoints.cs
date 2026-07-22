@@ -1,12 +1,12 @@
-namespace Petlyx.Api.Endpoints;
+namespace Api.Endpoints;
 
-using Petlyx.Api.Extensions;
-using Petlyx.Application.Abstractions.Identity;
-using Petlyx.Application.Abstractions.Messaging;
-using Petlyx.Application.Features.Identity.Login;
-using Petlyx.Application.Features.Identity.RefreshToken;
-using Petlyx.Application.Features.Identity.Register;
-using Petlyx.Domain.Common;
+using Api.Extensions;
+using Application.Abstractions.Identity;
+using Application.Abstractions.Messaging;
+using Application.Features.Identity.Login;
+using Application.Features.Identity.RefreshToken;
+using Application.Features.Identity.Register;
+using Domain.Common;
 
 public static class IdentityEndpoints
 {

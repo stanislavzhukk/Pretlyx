@@ -1,4 +1,4 @@
-namespace Petlyx.Architecture.Tests;
+namespace Architecture.Tests;
 
 using System.Reflection;
 using FluentAssertions;
@@ -10,10 +10,10 @@ public sealed class ArchitectureTests
     private static readonly Assembly ApplicationAssembly = typeof(Application.DependencyInjection).Assembly;
     private static readonly Assembly InfrastructureAssembly = typeof(Infrastructure.DependencyInjection).Assembly;
 
-    private const string DomainNamespace = "Petlyx.Domain";
-    private const string ApplicationNamespace = "Petlyx.Application";
-    private const string InfrastructureNamespace = "Petlyx.Infrastructure";
-    private const string ApiNamespace = "Petlyx.Api";
+    private const string DomainNamespace = "Domain";
+    private const string ApplicationNamespace = "Application";
+    private const string InfrastructureNamespace = "Infrastructure";
+    private const string ApiNamespace = "Api";
 
     [Fact]
     public void Domain_Should_Not_Depend_On_Application()
@@ -112,7 +112,7 @@ public sealed class ArchitectureTests
     {
         var result = Types.InAssembly(DomainAssembly)
             .That()
-            .ResideInNamespace("Petlyx.Domain.Entities")
+            .ResideInNamespace("Domain.Entities")
             .Should()
             .BeSealed()
             .GetResult();

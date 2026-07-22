@@ -1,6 +1,6 @@
-namespace Petlyx.Application.Abstractions.Identity;
+namespace Application.Abstractions.Identity;
 
-using Petlyx.Domain.Entities;
+using Domain.Entities;
 
 public interface ITokenService
 {

@@ -1,8 +1,8 @@
-namespace Petlyx.Application.UnitTests.Features.Todos;
+namespace Application.UnitTests.Features.Todos;
 
-using Petlyx.Application.Features.Todos.Delete;
-using Petlyx.Domain.Common;
-using Petlyx.Domain.Entities;
+using Application.Features.Todos.Delete;
+using Domain.Common;
+using Domain.Entities;
 using FluentAssertions;
 
 public sealed class DeleteTodoCommandHandlerTests
