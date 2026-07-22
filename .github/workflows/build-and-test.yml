@@ -21,10 +21,10 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Restore
-        run: dotnet restore src/CWM.CleanArchitecture.slnx
+        run: dotnet restore src/Pretlyx.slnx
 
       - name: Build
-        run: dotnet build src/CWM.CleanArchitecture.slnx --no-restore --configuration Release --warnaserror
+        run: dotnet build src/Pretlyx.slnx --no-restore --configuration Release --warnaserror
 
       - name: Test
-        run: dotnet test src/CWM.CleanArchitecture.slnx --no-build --configuration Release --verbosity minimal
+        run: dotnet test src/Pretlyx.slnx --no-build --configuration Release --verbosity minimal
