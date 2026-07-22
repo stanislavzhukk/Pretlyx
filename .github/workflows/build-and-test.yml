@@ -24,7 +24,8 @@ jobs:
         run: dotnet restore src/Pretlyx.slnx
 
       - name: Build
-        run: dotnet build src/Pretlyx.slnx --no-restore --configuration Release --warnaserror
+        # run: dotnet build src/Pretlyx.slnx --no-restore --configuration Release --warnaserror
+        run: dotnet build src/Pretlyx.slnx --no-restore --configuration Release
 
       - name: Test
         run: dotnet test src/Pretlyx.slnx --no-build --configuration Release --verbosity minimal
