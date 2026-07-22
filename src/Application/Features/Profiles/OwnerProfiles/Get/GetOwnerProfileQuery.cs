@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Application.Abstractions.Messaging;
+using Domain.Common;
 
 namespace Application.Features.Profiles.OwnerProfiles.Get;
 
-internal class GetWalkerProfileQuery
-{
-}
+public sealed record GetOwnerProfileQuery() : IQuery<Result<OwnerProfileResponse>>;
+public sealed record OwnerProfileResponse(Guid Id, DateTimeOffset CreatedAt, string? Email, string? PhoneNumber);

@@ -37,7 +37,7 @@ public static class WalkerProfileEndpoints
     {
         var result = await handler.HandleAsync(command, cancellationToken);
         return result.IsSuccess
-            ? TypedResults.CreatedAtRoute(result.Value, "GetWalkerProfile", new { id = result.Value!.Id })
+            ? TypedResults.CreatedAtRoute(result.Value, "GetWalkerProfile")
             : result.ToProblemDetails();
     }
 

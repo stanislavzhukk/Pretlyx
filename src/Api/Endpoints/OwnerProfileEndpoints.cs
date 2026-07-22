@@ -2,6 +2,7 @@ using System.Numerics;
 using Api.Extensions;
 using Application.Abstractions.Messaging;
 using Application.Features.Profiles.OwnerProfiles.Create;
+using Application.Features.Profiles.OwnerProfiles.Get;
 using Application.Features.Todos.Create;
 using Domain.Common;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -21,6 +22,10 @@ public static class OwnerProfileEndpoints
             .AddEndpointFilter<ValidationFilter<CreateOwnerProfileCommand>>()
             .WithName("CreateOwnerProfile")
             .WithSummary("Create a new owner profile");
+
+        group.MapGet("/", Get)
+            .WithName("GetOwnerProfile")
+            .WithSummary("Get the current user's Owner profile");
     }
 
     private static async Task<IResult> Create(
@@ -30,7 +35,15 @@ public static class OwnerProfileEndpoints
     {
         var result = await handler.HandleAsync(command, cancellationToken);
         return result.IsSuccess
-            ? TypedResults.CreatedAtRoute(result.Value, "GetOwnerProfileById", new { id = result.Value!.Id })
+            ? TypedResults.CreatedAtRoute(result.Value, "GetOwnerProfile")
             : result.ToProblemDetails();
+    }
+
+    private static async Task<IResult> Get(
+        IQueryHandler<GetOwnerProfileQuery, Result<OwnerProfileResponse>> handler,
+        CancellationToken cancellationToken)
+    {
+        var result = await handler.HandleAsync(new GetOwnerProfileQuery(), cancellationToken);
+        return result.IsSuccess ? TypedResults.Ok(result.Value) : result.ToProblemDetails();
     }
 }
