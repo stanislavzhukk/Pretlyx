@@ -141,7 +141,7 @@ namespace Infrastructure.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("OwnerProfiles");
+                    b.ToTable("OwnerProfiles", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.TodoItem", b =>
@@ -181,7 +181,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("IsCompleted");
 
-                    b.ToTable("Todos");
+                    b.ToTable("Todos", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.WalkerProfile", b =>
@@ -233,7 +233,7 @@ namespace Infrastructure.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("WalkerProfiles");
+                    b.ToTable("WalkerProfiles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>

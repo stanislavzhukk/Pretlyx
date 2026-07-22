@@ -6,7 +6,7 @@ using Domain.Entities;
 
 namespace Domain.Entities;
 
-public class OwnerProfile : AuditableEntity
+public sealed class OwnerProfile : AuditableEntity
 {
     public Guid UserId { get; set; }
     public string Name { get; set; } = default!;

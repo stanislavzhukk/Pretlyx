@@ -5,7 +5,7 @@ using Domain.Common;
 
 namespace Domain.Entities;
 
-public class WalkerProfile : AuditableEntity
+public sealed class WalkerProfile : AuditableEntity
 {
     public Guid UserId { get; set; }
     public string Name { get; set; } = default!;
