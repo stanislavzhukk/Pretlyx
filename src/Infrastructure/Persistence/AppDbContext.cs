@@ -10,7 +10,7 @@ using Domain.Entities;
 public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbContext<ApplicationUser, IdentityRole<Guid>,Guid>(options), IAppDbContext
 {
     public DbSet<TodoItem> Todos => Set<TodoItem>();
-    public DbSet<OwnerProfile> ownerProfiles => Set<OwnerProfile>();
+    public DbSet<OwnerProfile> OwnerProfiles => Set<OwnerProfile>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

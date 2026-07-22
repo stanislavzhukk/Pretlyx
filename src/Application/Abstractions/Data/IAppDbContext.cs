@@ -7,6 +7,6 @@ using Domain.Entities;
 public interface IAppDbContext
 {
     DbSet<TodoItem> Todos { get; }
-    DbSet<OwnerProfile> ownerProfiles { get; }
+    DbSet<OwnerProfile> OwnerProfiles { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
