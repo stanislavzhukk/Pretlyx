@@ -9,6 +9,6 @@ public sealed class ApplicationUser : IdentityUser<Guid>
     public string? RefreshToken { get; set; }
     public DateTimeOffset? RefreshTokenExpiryTime { get; set; }
 
-    public OwnerProfile? ownerProfile { get; set; } = default!;
-    //public ICollection<OwnerProfile> OwnerProfiles { get; set; } = new List<OwnerProfile>();
+    public OwnerProfile? OwnerProfile { get; set; } = default!;
+    public WalkerProfile? WalkerProfile { get; set; } = default!;
 }

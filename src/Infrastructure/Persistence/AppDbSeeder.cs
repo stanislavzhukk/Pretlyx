@@ -46,6 +46,7 @@ public static class AppDbSeeder
 
         var admin = new ApplicationUser
         {
+            Id = Guid.NewGuid(),
             FirstName = "Admin",
             LastName = "User",
             Email = adminEmail,

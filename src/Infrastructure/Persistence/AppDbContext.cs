@@ -11,6 +11,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : Ident
 {
     public DbSet<TodoItem> Todos => Set<TodoItem>();
     public DbSet<OwnerProfile> OwnerProfiles => Set<OwnerProfile>();
+    public DbSet<WalkerProfile> WalkerProfiles => Set<WalkerProfile>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

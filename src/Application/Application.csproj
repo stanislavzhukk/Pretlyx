@@ -7,9 +7,4 @@
     <PackageReference Include="FluentValidation" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features\Profiles\OwnerProfiles\Delete\" />
-    <Folder Include="Features\Profiles\WalkerProfile\Create\" />
-    <Folder Include="Features\Profiles\WalkerProfile\Delete\" />
-  </ItemGroup>
 </Project>

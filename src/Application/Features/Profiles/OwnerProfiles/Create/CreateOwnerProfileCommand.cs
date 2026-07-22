@@ -6,6 +6,6 @@ using Domain.Common;
 
 namespace Application.Features.Profiles.OwnerProfiles.Create;
 
-public sealed record CreateOwnerProfileCommand(Guid UserId, string Name, string? Phone) : ICommand<Result<CreateOwnerProfileResponse>>;
+public sealed record CreateOwnerProfileCommand(string Name, string? Phone) : ICommand<Result<CreateOwnerProfileResponse>>;
 
-public sealed record CreateOwnerProfileResponse(Guid Id, Guid UserId, string Name, string? Phone);
+public sealed record CreateOwnerProfileResponse(Guid Id, string Name, string? Phone);
