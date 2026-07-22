@@ -16,7 +16,7 @@ public static class WalkerProfileEndpoints
 {
     public static void MapWalkerProfileEndpoints(this IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup("/api/Walker-profiles")
+        var group = app.MapGroup("/api/profiles/walker")
             .WithTags("WalkerProfiles")
             .RequireAuthorization();
 
@@ -25,7 +25,7 @@ public static class WalkerProfileEndpoints
             .WithName("CreateWalkerProfile")
             .WithSummary("Create a new Walker profile");
 
-        group.MapGet("/", Get)
+        group.MapGet("/me", Get)
             .WithName("GetWalkerProfile")
             .WithSummary("Get the current user's walker profile");
     }

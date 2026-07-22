@@ -1,10 +1,31 @@
-# CWM Clean Architecture Template
+# Pretlyx
+ .NET 10 | C# 14 | Aspire 13 | EF Core 10 | xUnit v3
 
-**v1.0.0** | .NET 10 | C# 14 | Aspire 13 | EF Core 10 | xUnit v3
+A dog-walking platform — owners find and book walkers, walkers manage their schedule and get discovered by nearby owners with dogs.
 
-A production-ready **Clean Architecture** starter template for **.NET 10** by [Mukesh Murugan](https://codewithmukesh.com).
+Built on top of a Clean Architecture starter template. Zero commercial dependencies, everything set up to ship features from day one.
 
-Built with the latest packages, zero commercial dependencies, and everything you need to start shipping features from day one.
+## Status
+
+Early stage — architecture and auth are in place, domain features are being built stage by stage.
+
+| Stage | Feature | Status |
+|-------|---------|--------|
+| 1 | Project foundation (Clean Architecture, CQRS, EF Core, Identity/JWT, PostgreSQL, Aspire) | ✅ Done |
+| 2 | User profiles (Owner / Walker) | 🟡 In progress — create endpoints for `OwnerProfile` and `WalkerProfile` exist; update, avatar upload, and mode switching not yet built |
+| 3 | Dogs | ⬜ Not started |
+| 4 | Walker availability / schedule | ⬜ Not started |
+| 5 | Slot generation | ⬜ Not started |
+| 6 | Walker search | ⬜ Not started |
+| 7 | Booking | ⬜ Not started |
+| 8 | Booking history | ⬜ Not started |
+| 9 | Reviews | ⬜ Not started |
+| 10 | Favorites | ⬜ Not started |
+| 11 | Notifications | ⬜ Not started |
+| 12 | Chat | ⬜ Not started |
+| 13 | Admin | ⬜ Not started (Identity role + seeded admin already scaffolded by the template) |
+
+Payments, promo codes, push notifications, live walker location tracking, walk photo reports, subscriptions, and calendar sync are intentionally out of scope for now.
 
 ## Tech Stack
 
@@ -51,19 +72,29 @@ Built with the latest packages, zero commercial dependencies, and everything you
 
 **Dependency rule:** Each layer only depends on the layer below it. Domain has zero external dependencies. Architecture tests enforce this at build time.
 
+## Domain Model (current + planned)
+
+- `OwnerProfile` / `WalkerProfile` — one-to-one with `User` (Identity), 🟡 in progress
+- `Dog` — belongs to an `OwnerProfile`, planned
+- `AvailabilityRule` / `AvailabilityException` — a walker's recurring schedule + one-off exceptions (vacation, extra day), planned
+- `Booking` — the core aggregate; `Pending → Accepted/Rejected → Completed`, with `Cancelled*` branches, planned
+- `Review`, `FavoriteWalker`, `Notification`, `ChatMessage`, `Complaint` — later stages
+
+Slots are **not** a persisted entity — they're computed on the fly from `AvailabilityRule`/`AvailabilityException` minus overlapping active `Booking`s, to avoid pre-materializing a slot table for every walker for months ahead.
+
 ## Project Structure
 
 ```
 ├── src/
-│   ├── CWM.CleanArchitecture.Domain/           # Entities, value objects, repository interfaces
-│   ├── CWM.CleanArchitecture.Application/       # CQRS commands/queries, handlers, validators
-│   ├── CWM.CleanArchitecture.Infrastructure/    # EF Core, Identity, JWT, caching, repositories
-│   ├── CWM.CleanArchitecture.Api/               # Minimal API endpoints, Scalar, middleware
-│   ├── CWM.CleanArchitecture.AppHost/           # Aspire orchestration (PostgreSQL + Redis)
-│   └── CWM.CleanArchitecture.ServiceDefaults/   # OpenTelemetry, health checks, resilience
+│   ├── Domain/           # Entities, value objects, repository interfaces
+│   ├── Application/       # CQRS commands/queries, handlers, validators
+│   ├── Infrastructure/    # EF Core, Identity, JWT, caching, repositories
+│   ├── Api/               # Minimal API endpoints, Scalar, middleware
+│   ├── AppHost/           # Aspire orchestration (PostgreSQL + Redis)
+│   └── ServiceDefaults/   # OpenTelemetry, health checks, resilience
 ├── tests/
-│   ├── CWM.CleanArchitecture.Architecture.Tests/ # Dependency rule enforcement (9 tests)
-│   └── CWM.CleanArchitecture.Application.UnitTests/ # Handler unit tests (8 tests)
+│   ├── Architecture.Tests/     # Dependency rule enforcement
+│   └── Application.UnitTests/  # Handler unit tests
 ├── Directory.Build.props                         # .NET 10, C# latest, nullable enabled
 ├── Directory.Packages.props                      # Central Package Management
 ├── .editorconfig                                 # Code style rules
@@ -81,7 +112,7 @@ Built with the latest packages, zero commercial dependencies, and everything you
 ### Run with Aspire (recommended)
 
 ```bash
-cd src/CWM.CleanArchitecture.AppHost
+cd src/AppHost
 dotnet run
 ```
 
@@ -100,7 +131,7 @@ Open the Aspire Dashboard URL from the console output to see your telemetry.
 docker compose up -d
 
 # Run the API
-cd src/CWM.CleanArchitecture.Api
+cd src/Api
 dotnet run
 ```
 
@@ -109,32 +140,19 @@ dotnet run
 Navigate to `https://localhost:7200/scalar/v1` for the interactive Scalar API docs.
 
 **Default admin credentials** (seeded automatically):
-- Email: `admin@cwm.dev`
-- Password: `Admin@123`
+- Email: `admin@example.com`
+- Password: `Admin123!`
 
 ### Run Tests
 
 ```bash
 cd src
-dotnet test CWM.CleanArchitecture.slnx
+dotnet test Petlyx.slnx
 ```
-
-## Sample: Todos Feature
-
-The template includes a complete **Todos** CRUD feature as a reference implementation:
-
-| Endpoint | Method | Auth | Description |
-|----------|--------|------|-------------|
-| `/api/todos` | GET | Yes | Get all todos (paginated) |
-| `/api/todos/{id}` | GET | Yes | Get a todo by ID |
-| `/api/todos` | POST | Yes | Create a new todo |
-| `/api/todos/{id}` | PUT | Yes | Update a todo |
-| `/api/todos/{id}/complete` | PATCH | Yes | Mark as completed |
-| `/api/todos/{id}` | DELETE | Yes | Delete a todo |
 
 ### Adding a New Feature
 
-Follow the Todos pattern:
+Follow the Todos / Profiles pattern:
 
 1. **Domain** — Add your entity in `Domain/Entities/`
 2. **Application** — Create a feature folder in `Application/Features/YourFeature/` with command/query records, handlers, and validators
@@ -151,16 +169,5 @@ Follow the Todos pattern:
 | **Result pattern** over exceptions | Explicit error handling, no hidden control flow, better API contracts. |
 | **Manual handler registration** over Scrutor | Zero dependencies for DI scanning. Assembly reflection is 40 lines of code. |
 | **.slnx** over .sln | XML-based, merge-friendly, smaller, future of .NET solutions. |
-
-## About
-
-Built by [Mukesh Murugan](https://codewithmukesh.com) — .NET content creator helping developers build production-ready applications.
-
-- [Newsletter](https://codewithmukesh.com/newsletter) — Weekly .NET insights, architecture deep-dives, and exclusive content
-- [LinkedIn](https://linkedin.com/in/iaboromukesh) — 40K+ followers
-- [YouTube](https://youtube.com/@codewithmukesh) — Video tutorials and walkthroughs
-- [GitHub](https://github.com/iammukeshm) — Open source projects
-
-## License
-
-MIT License. Use it, modify it, ship it. Attribution appreciated but not required.
+| **Slots computed, not stored** | Avoids materializing and invalidating a slot table for every walker on every schedule change; recomputed on read, cached with a short TTL. |
+| **Price frozen on booking (`PriceAtBooking`)** | A walker changing their rate later must not retroactively change the price of an existing booking. |

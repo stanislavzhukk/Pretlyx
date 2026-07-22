@@ -14,7 +14,7 @@ public static class OwnerProfileEndpoints
 {
     public static void MapOwnerProfileEndpoints(this IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup("/api/owner-profiles")
+        var group = app.MapGroup("/api/profiles/owner")
             .WithTags("OwnerProfiles")
             .RequireAuthorization();
 
@@ -23,7 +23,7 @@ public static class OwnerProfileEndpoints
             .WithName("CreateOwnerProfile")
             .WithSummary("Create a new owner profile");
 
-        group.MapGet("/", Get)
+        group.MapGet("/me", Get)
             .WithName("GetOwnerProfile")
             .WithSummary("Get the current user's Owner profile");
     }
