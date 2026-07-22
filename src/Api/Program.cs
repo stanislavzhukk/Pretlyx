@@ -84,7 +84,7 @@ try
         app.MapScalarApiReference(options =>
         {
             options.WithTitle("Petlyx API");
-            options.WithTheme(ScalarTheme.DeepSpace);
+            options.WithTheme(ScalarTheme.BluePlanet);
             options.WithDefaultHttpClient(ScalarTarget.Shell, ScalarClient.Curl);
         });
     }

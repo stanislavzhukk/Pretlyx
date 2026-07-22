@@ -11,7 +11,7 @@ public sealed class CreateWalkerProfileCommandHandler(IAppDbContext dbContext, I
 {
     public async Task<Result<CreateWalkerProfileResponse>> HandleAsync(CreateWalkerProfileCommand command, CancellationToken cancellationToken = default)
     {
-        Guid.TryParse(user.UserId, out var userId);
+        var userId = user.UserId ?? throw new InvalidOperationException("User ID is not available");
         var WalkerProfile = new WalkerProfile
         {
             UserId = userId,

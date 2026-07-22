@@ -10,12 +10,7 @@ public sealed class CreateOwnerProfileCommandHandler(IAppDbContext dbContext, IC
 {
     public async Task<Result<CreateOwnerProfileResponse>> HandleAsync(CreateOwnerProfileCommand command, CancellationToken cancellationToken = default)
     {
-        Guid.TryParse(user.UserId, out var userId1);
-        Console.WriteLine(userId1);
-        if (!Guid.TryParse(user.UserId, out var userId))
-        {
-            return Result.Failure<CreateOwnerProfileResponse>(Error.Failure("404","UserId not found"));
-        }
+        var userId = user.UserId ?? throw new InvalidOperationException("User ID is not available");
         var ownerProfile = new OwnerProfile
         {
             UserId = userId,
