@@ -2,7 +2,7 @@ namespace Petlyx.Domain.Entities;
 
 using Microsoft.AspNetCore.Identity;
 
-public sealed class ApplicationUser : IdentityUser
+public sealed class ApplicationUser : IdentityUser<Guid>
 {
     public string FirstName { get; set; } = default!;
     public string LastName { get; set; } = default!;

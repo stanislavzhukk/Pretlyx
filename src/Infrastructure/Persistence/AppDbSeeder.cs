@@ -13,7 +13,7 @@ public static class AppDbSeeder
         using var scope = serviceProvider.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
         var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
         var logger = scope.ServiceProvider.GetRequiredService<ILogger<AppDbContext>>();
 
         await context.Database.MigrateAsync();
@@ -23,7 +23,7 @@ public static class AppDbSeeder
         await SeedSampleTodosAsync(context, logger);
     }
 
-    private static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager, ILogger logger)
+    private static async Task SeedRolesAsync(RoleManager<IdentityRole<Guid>> roleManager, ILogger logger)
     {
         string[] roles = ["Admin", "User"];
 
@@ -31,7 +31,7 @@ public static class AppDbSeeder
         {
             if (!await roleManager.RoleExistsAsync(role))
             {
-                await roleManager.CreateAsync(new IdentityRole(role));
+                await roleManager.CreateAsync(new IdentityRole<Guid>(role));
                 logger.LogInformation("Created role: {Role}", role);
             }
         }

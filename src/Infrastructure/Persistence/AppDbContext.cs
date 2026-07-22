@@ -1,12 +1,13 @@
 namespace Petlyx.Infrastructure.Persistence;
 
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Petlyx.Application.Abstractions.Data;
 using Petlyx.Domain.Common;
 using Petlyx.Domain.Entities;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 
-public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbContext<ApplicationUser>(options), IAppDbContext
+public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbContext<ApplicationUser, IdentityRole<Guid>,Guid>(options), IAppDbContext
 {
     public DbSet<TodoItem> Todos => Set<TodoItem>();
 
