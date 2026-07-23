@@ -15,7 +15,7 @@ public sealed class GetWalkerProfileQueryHandler(IAppDbContext dbContext, ICurre
         if (walkerProfile is null)
             return Result.Failure<WalkerProfileResponse>(Error.NotFound("WalkerProfile.NotFound", $"User with '{user.UserId}' don't have a walker profile."));
 
-        var response = new WalkerProfileResponse(walkerProfile.Id, walkerProfile.CreatedAt, walkerProfile.Email, walkerProfile.PhoneNumber, walkerProfile.ExperienceYears, walkerProfile.Rating, walkerProfile.Location);
+        var response = new WalkerProfileResponse(walkerProfile.Id, walkerProfile.CreatedAt, walkerProfile.PhoneNumber, walkerProfile.ExperienceYears, walkerProfile.Rating, walkerProfile.Location);
         return Result.Success(response);
     }
 }

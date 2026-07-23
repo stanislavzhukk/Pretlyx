@@ -18,5 +18,9 @@ public class OwnerProfileConfiguration : IEntityTypeConfiguration<OwnerProfile>
             .HasOne(op => op.User)
             .WithOne(u => u.OwnerProfile)
             .HasForeignKey<OwnerProfile>(op => op.UserId);
+
+        builder.Property(op => op.PhoneNumber)
+            .HasMaxLength(16)
+            .IsUnicode(false);
     }
 }

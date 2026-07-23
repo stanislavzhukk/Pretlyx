@@ -15,7 +15,7 @@ public sealed class GetOwnerProfileQueryHandler(IAppDbContext dbContext, ICurren
         if (OwnerProfile is null)
             return Result.Failure<OwnerProfileResponse>(Error.NotFound("OwnerProfile.NotFound", $"User with '{user.UserId}' don't have a Owner profile."));
 
-        var response = new OwnerProfileResponse(OwnerProfile.Id, OwnerProfile.CreatedAt, OwnerProfile.Email, OwnerProfile.PhoneNumber);
+        var response = new OwnerProfileResponse(OwnerProfile.Id,OwnerProfile.Name, OwnerProfile.PhoneNumber ?? null, OwnerProfile.CreatedAt);
         return Result.Success(response);
     }
 }

@@ -116,9 +116,6 @@ namespace Infrastructure.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("text");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("text");
-
                     b.Property<DateTimeOffset?>("LastModifiedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -131,7 +128,9 @@ namespace Infrastructure.Migrations
                         .HasColumnType("character varying(100)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("text");
+                        .HasMaxLength(16)
+                        .IsUnicode(false)
+                        .HasColumnType("character varying(16)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -141,7 +140,7 @@ namespace Infrastructure.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("OwnerProfiles", (string)null);
+                    b.ToTable("OwnerProfiles");
                 });
 
             modelBuilder.Entity("Domain.Entities.TodoItem", b =>
@@ -181,7 +180,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("IsCompleted");
 
-                    b.ToTable("Todos", (string)null);
+                    b.ToTable("Todos");
                 });
 
             modelBuilder.Entity("Domain.Entities.WalkerProfile", b =>
@@ -194,9 +193,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Email")
                         .HasColumnType("text");
 
                     b.Property<int?>("ExperienceYears")
@@ -233,7 +229,7 @@ namespace Infrastructure.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("WalkerProfiles", (string)null);
+                    b.ToTable("WalkerProfiles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>

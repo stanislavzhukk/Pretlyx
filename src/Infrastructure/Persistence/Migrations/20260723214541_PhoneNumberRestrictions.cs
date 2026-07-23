@@ -5,11 +5,19 @@
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class OwnerProfileNullableFields : Migration
+    public partial class PhoneNumberRestrictions : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropColumn(
+                name: "Email",
+                table: "WalkerProfiles");
+
+            migrationBuilder.DropColumn(
+                name: "Email",
+                table: "OwnerProfiles");
+
             migrationBuilder.AlterColumn<float>(
                 name: "Rating",
                 table: "WalkerProfiles",
@@ -51,25 +59,11 @@ namespace Infrastructure.Migrations
                 oldType: "integer");
 
             migrationBuilder.AlterColumn<string>(
-                name: "Email",
-                table: "WalkerProfiles",
-                type: "text",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "text");
-
-            migrationBuilder.AlterColumn<string>(
                 name: "PhoneNumber",
                 table: "OwnerProfiles",
-                type: "text",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "text");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Email",
-                table: "OwnerProfiles",
-                type: "text",
+                type: "character varying(16)",
+                unicode: false,
+                maxLength: 16,
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "text");
@@ -128,15 +122,12 @@ namespace Infrastructure.Migrations
                 oldType: "integer",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AddColumn<string>(
                 name: "Email",
                 table: "WalkerProfiles",
                 type: "text",
                 nullable: false,
-                defaultValue: "",
-                oldClrType: typeof(string),
-                oldType: "text",
-                oldNullable: true);
+                defaultValue: "");
 
             migrationBuilder.AlterColumn<string>(
                 name: "PhoneNumber",
@@ -145,18 +136,17 @@ namespace Infrastructure.Migrations
                 nullable: false,
                 defaultValue: "",
                 oldClrType: typeof(string),
-                oldType: "text",
+                oldType: "character varying(16)",
+                oldUnicode: false,
+                oldMaxLength: 16,
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AddColumn<string>(
                 name: "Email",
                 table: "OwnerProfiles",
                 type: "text",
                 nullable: false,
-                defaultValue: "",
-                oldClrType: typeof(string),
-                oldType: "text",
-                oldNullable: true);
+                defaultValue: "");
         }
     }
 }

@@ -2,6 +2,7 @@ using Application.Abstractions.Data;
 using Application.Abstractions.Identity;
 using Application.Abstractions.Messaging;
 using Application.Features.Profiles.OwnerProfiles.Create;
+using Application.Features.Profiles.OwnerProfiles.Update;
 using Domain.Common;
 using Domain.Entities;
 
@@ -11,6 +12,15 @@ public sealed class CreateOwnerProfileCommandHandler(IAppDbContext dbContext, IC
     public async Task<Result<CreateOwnerProfileResponse>> HandleAsync(CreateOwnerProfileCommand command, CancellationToken cancellationToken = default)
     {
         var userId = user.UserId ?? throw new InvalidOperationException("User ID is not available");
+
+        if(dbContext.OwnerProfiles.Where(x => x.UserId == userId).Any())
+        {
+            return Result.Failure<CreateOwnerProfileResponse>(
+                Error.Failure(
+                    "OwnerProfile.AlreadyExists",
+                    $"Owner profile already exists"));
+        }
+
         var ownerProfile = new OwnerProfile
         {
             UserId = userId,

@@ -8,5 +8,8 @@ public sealed class CreateOwnerProfileValidator : AbstractValidator<CreateOwnerP
         RuleFor(x => x.Name)
             .NotEmpty()
             .MaximumLength(90);
+
+        RuleFor(x => x.Phone)
+            .MaximumLength(16);
     }
 }

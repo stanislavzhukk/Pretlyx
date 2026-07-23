@@ -15,7 +15,6 @@ public sealed class WalkerProfile : AuditableEntity
     public float? Rating { get; set; }
     public string? Location { get; set; }
     //potentially postgis
-    public string? Email { get; set; } = default!;
     public string? PhoneNumber { get; set; } = default!;
     public ApplicationUser User { get; set; }
 }

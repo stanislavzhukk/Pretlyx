@@ -3,6 +3,7 @@ using Api.Extensions;
 using Application.Abstractions.Messaging;
 using Application.Features.Profiles.OwnerProfiles.Create;
 using Application.Features.Profiles.OwnerProfiles.Get;
+using Application.Features.Profiles.OwnerProfiles.Update;
 using Application.Features.Todos.Create;
 using Domain.Common;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -26,6 +27,14 @@ public static class OwnerProfileEndpoints
         group.MapGet("/me", Get)
             .WithName("GetOwnerProfile")
             .WithSummary("Get the current user's Owner profile");
+
+        group.MapPost("/upload-avatar", UploadAvatar)
+            .WithName("UploadAvatar")
+            .WithSummary("Upload an avatar for the current user's Owner profile");
+
+        group.MapPatch("/update-profile", UpdateProfile)
+            .WithName("UpdateOwnerProfile")
+            .WithSummary("Update the current user's Owner profile");
     }
 
     private static async Task<IResult> Create(
@@ -44,6 +53,23 @@ public static class OwnerProfileEndpoints
         CancellationToken cancellationToken)
     {
         var result = await handler.HandleAsync(new GetOwnerProfileQuery(), cancellationToken);
+        return result.IsSuccess ? TypedResults.Ok(result.Value) : result.ToProblemDetails();
+    }
+
+    private static async Task<IResult> UploadAvatar(
+        IQueryHandler<GetOwnerProfileQuery, Result<OwnerProfileResponse>> handler,
+        CancellationToken cancellationToken)
+    {
+        // Implementation for uploading avatar
+        return TypedResults.Ok();
+    }
+
+    private static async Task<IResult> UpdateProfile(
+        UpdateOwnerProfileCommand command,
+        ICommandHandler<UpdateOwnerProfileCommand, Result<UpdateOwnerProfileResponse>> handler,
+        CancellationToken cancellationToken)
+    {
+        var result = await handler.HandleAsync(command, cancellationToken);
         return result.IsSuccess ? TypedResults.Ok(result.Value) : result.ToProblemDetails();
     }
 }
